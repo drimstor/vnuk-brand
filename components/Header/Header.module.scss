@@ -1,0 +1,44 @@
+@use '/styles/_helpers' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  background: rgba(243, 238, 234, 0.4);
+  width: calc(100% - 8px);
+  height: 55px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  @extend %border;
+  transition: 0.3s ease-in-out;
+  top: -60px;
+
+  @include tablet {
+    height: 50px;
+    width: 100%;
+  }
+
+  animation: showHeader 0.5s 0.5s ease-in-out forwards;
+}
+
+@keyframes showHeader {
+  0% {
+    top: -60px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+
+.logo {
+  @extend %f3;
+  font-size: 42px;
+  user-select: none;
+  cursor: pointer;
+
+  @include tablet {
+    font-size: 24px;
+  }
+}

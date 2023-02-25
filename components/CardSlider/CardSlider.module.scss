@@ -1,0 +1,150 @@
+@use '/styles/_helpers' as *;
+
+.imagesCarousel {
+  height: 100vh;
+  overflow-y: scroll;
+  @extend %scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 128px;
+  padding-left: 10%;
+  padding-left: 210px;
+  padding-top: 100px;
+  padding-bottom: 40px;
+  scroll-behavior: smooth;
+  transition: 0.3s ease-in-out;
+
+  @include tablet {
+    overflow: hidden;
+    flex-direction: row;
+    padding-left: 0;
+    padding-top: 50px;
+    height: 450px;
+    overflow: hidden;
+  }
+
+  &.zoom {
+    height: 690px;
+  }
+
+  img {
+    width: auto;
+    height: 85%;
+    user-select: none;
+    transition: 0.3s ease-in-out;
+    opacity: 0;
+    filter: blur(5px);
+
+    &.imageLoad {
+      opacity: 1;
+      filter: blur(0px);
+    }
+  }
+}
+
+.slideBox {
+  min-height: 100vh;
+
+  @include tablet {
+    min-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: auto;
+  }
+}
+
+.controlCarousel {
+  position: fixed;
+  left: -60px;
+  top: 50%;
+  transform: translate(0, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: showControl 0.5s 0.5s ease-in-out forwards;
+
+  @include tablet {
+    opacity: 0;
+    filter: blur(5px);
+    animation: showControlMobile 0.3s 0.7s ease-in-out forwards;
+  }
+
+  @keyframes showControl {
+    0% {
+      left: -60px;
+    }
+    100% {
+      left: 20px;
+    }
+  }
+
+  @keyframes showControlMobile {
+    0% {
+      opacity: 0;
+      filter: blur(5px);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
+  @include tablet {
+    position: relative;
+    flex-direction: row;
+    margin: 0 auto;
+    margin-top: -20px;
+    left: auto;
+    width: fit-content;
+  }
+
+  img {
+    width: auto;
+    height: 50px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+    user-select: none;
+    padding: 5px 8px;
+    background: rgba(255, 255, 255, 0.351);
+    backdrop-filter: blur(3px);
+
+    &:hover {
+      @extend %border2;
+    }
+
+    &:active {
+      transform: scale(0.93);
+    }
+
+    &.active {
+      @extend %border;
+    }
+  }
+}
+
+.zoomButton {
+  position: absolute;
+  top: 80px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  @extend %border;
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0.277);
+  transition: 0.3s;
+
+  display: none;
+
+  @include tablet {
+    display: flex;
+  }
+
+  svg {
+    font-size: 14px;
+  }
+}
