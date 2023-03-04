@@ -3,6 +3,7 @@ import CardSlider from '@/components/Product/CardSlider/CardSlider';
 import Layout from '@/components/Layout/Layout';
 import React from 'react';
 import { iCatalog, iProduct } from '@/helpers/types';
+import { PORT } from '@/helpers/constants';
 
 interface ProductProps {
   currentProduct: iProduct;
@@ -20,7 +21,7 @@ function Product({ currentProduct }: ProductProps) {
 export default Product;
 
 export async function getStaticPaths() {
-  const res = await fetch('http://localhost:3000/api/product');
+  const res = await fetch(`${PORT}/api/product`);
   const products = await res.json();
 
   const paths = products.map((product: iCatalog) => ({
@@ -31,7 +32,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const res = await fetch('http://localhost:3000/api/product');
+  const res = await fetch(`${PORT}/api/product`);
   const products = await res.json();
   const currentProduct = products.filter((product: iCatalog) => product.link.split('/').pop() === params.id)[0];
 

@@ -5,6 +5,7 @@ import Layout from '@/components/Layout/Layout';
 import { iCatalog } from '@/helpers/types';
 import { sexValues } from '@/pages/api/catalog';
 import BackButton from '@/ui-kit/Buttons/BackButton';
+import { PORT } from '@/helpers/constants';
 
 interface SubCatalogProps {
   currentCatalog?: iCatalog;
@@ -24,7 +25,7 @@ function SubCatalog({ currentCatalog }: SubCatalogProps) {
 export default SubCatalog;
 
 export async function getStaticPaths() {
-  const res = await fetch('http://localhost:3000/api/catalog');
+  const res = await fetch(`${PORT}/api/catalog`);
   const catalogs = await res.json();
 
   const paths = sexValues.flatMap((sex) => {
@@ -37,7 +38,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const res = await fetch('http://localhost:3000/api/catalog');
+  const res = await fetch(`${PORT}/api/catalog`);
   const catalogs = await res.json();
   const currentCatalog = catalogs.filter(
     (catalog: iCatalog) => catalog.clothes === params.clothes && catalog.sex === params.sex
