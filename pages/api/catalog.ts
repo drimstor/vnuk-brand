@@ -5,7 +5,7 @@ export const sexValues = ['men', 'women'];
 
 export default async function catalogHandler(req: NextApiRequest, res: NextApiResponse) {
   // console.log(req.query);
-  const newRes = await fetch(`${PORT}/api/product`);
+  const newRes = await fetch(`/api/product`);
   const products = await newRes.json();
 
   const catalogs: iCatalog[] = [

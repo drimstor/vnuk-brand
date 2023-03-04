@@ -21,7 +21,7 @@ function Product({ currentProduct }: ProductProps) {
 export default Product;
 
 export async function getStaticPaths() {
-  const res = await fetch(`${PORT}/api/product`);
+  const res = await fetch(`/api/product`);
   const products = await res.json();
 
   const paths = products.map((product: iCatalog) => ({
@@ -32,7 +32,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const res = await fetch(`${PORT}/api/product`);
+  const res = await fetch(`/api/product`);
   const products = await res.json();
   const currentProduct = products.filter((product: iCatalog) => product.link.split('/').pop() === params.id)[0];
 
