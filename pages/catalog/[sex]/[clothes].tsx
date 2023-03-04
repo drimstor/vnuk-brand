@@ -25,7 +25,7 @@ function SubCatalog({ currentCatalog }: SubCatalogProps) {
 export default SubCatalog;
 
 export async function getStaticPaths() {
-  const res = await fetch(`/api/catalog`);
+  const res = await fetch(`${PORT}/api/catalog`);
   const catalogs = await res.json();
 
   const paths = sexValues.flatMap((sex) => {
@@ -38,7 +38,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const res = await fetch(`/api/catalog`);
+  const res = await fetch(`${PORT}/api/catalog`);
   const catalogs = await res.json();
   const currentCatalog = catalogs.filter(
     (catalog: iCatalog) => catalog.clothes === params.clothes && catalog.sex === params.sex
