@@ -1,12 +1,13 @@
 import { PORT } from '@/helpers/constants';
 import { iCatalog, iProduct } from '@/helpers/types';
+import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
 export const sexValues = ['men', 'women'];
 
 export default async function catalogHandler(req: NextApiRequest, res: NextApiResponse) {
   // console.log(req.query);
-  const newRes = await fetch(`${PORT}/api/product`);
-  const products = await newRes.json();
+  const newRes = await axios.get(`${PORT}/api/product`);
+  const products = await newRes.data;
 
   const catalogs: iCatalog[] = [
     {
