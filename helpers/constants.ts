@@ -3,6 +3,7 @@ import vkIcon from '@/ui-kit/Other/vk.svg';
 
 export const PORT = process.env.NEXT_PUBLIC_HOSTNAME || 'http://localhost:3000';
 
+
 export const navList = [
   {
     name: 'Женское',
