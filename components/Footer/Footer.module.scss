@@ -1,0 +1,64 @@
+@use '/styles/_helpers' as *;
+
+.footer {
+  @extend %border;
+  background: #faf8f7;
+  padding: 38px 0;
+  @extend %f2;
+}
+
+.bottom {
+  margin-top: 38px;
+}
+
+.text {
+  font-size: 10px;
+  font-weight: 300;
+  color: #919191;
+  border-bottom: 1px solid #d7d7d7;
+  padding-bottom: 10px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  @include tablet {
+    flex-direction: column;
+    align-items: center;
+    gap: 44px;
+  }
+}
+
+.copyright {
+  color: #919191;
+  display: block;
+  padding-top: 8px;
+  font-size: 14px;
+}
+
+.list {
+  min-width: 181px;
+
+  img {
+    width: 22px;
+    height: 22px;
+  }
+
+  h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  li {
+    font-size: 12px;
+    font-weight: 400;
+    color: #a3a3a3;
+    transition: 0.3s;
+    margin-bottom: 2px;
+
+    &:hover {
+      color: #646464;
+    }
+  }
+}

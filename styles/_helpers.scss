@@ -73,16 +73,17 @@ $lightgrey: #757575;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: rgb(184, 184, 184);
+    background: #b5b1aed3;
     border-radius: 15px;
 
     &:hover {
-      background-color: rgba(129, 129, 129, 0.8);
+      background: #868380d3;
     }
   }
 
   &::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
   }
 }
 

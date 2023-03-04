@@ -2,9 +2,10 @@
 
 .wrapper {
   position: fixed;
-  right: 25%;
+  right: 15%;
   top: 47%;
   width: fit-content;
+  min-width: 320px;
   transform: translate(0, -50%);
   display: flex;
   flex-direction: column;
@@ -13,17 +14,6 @@
   opacity: 0;
   filter: blur(5px);
   animation: showHeader 0.3s 0.7s ease-in-out forwards;
-
-  @keyframes showHeader {
-    0% {
-      opacity: 0;
-      filter: blur(5px);
-    }
-    100% {
-      opacity: 1;
-      filter: blur(0px);
-    }
-  }
 
   @include tablet {
     position: relative;
@@ -108,5 +98,61 @@
   img {
     width: 110%;
     height: auto;
+    pointer-events: none;
+    user-select: none;
   }
 }
+
+.bottomMenu {
+  position: fixed;
+  display: flex;
+  gap: 24px;
+  bottom: -25px;
+  right: 17%;
+  width: fit-content;
+  transition: 0.3s ease-in-out;
+  animation: showBottomMenu 0.5s 0.5s ease-in-out forwards;
+
+  @include tablet {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    padding-top: 60px;
+    margin: 0 auto;
+  }
+
+  li {
+    color: rgb(162, 162, 162);
+    font-size: 12px;
+    @extend %f2;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      color: black;
+    }
+  }
+}
+
+
+
+@keyframes showBottomMenu {
+  0% {
+    bottom: -25px;
+  }
+  100% {
+    bottom: 25px;
+  }
+}
+
+@keyframes showHeader {
+  0% {
+    opacity: 0;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+

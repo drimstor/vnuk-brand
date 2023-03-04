@@ -7,9 +7,10 @@
   top: -33px;
   left: calc(50% - 45px);
   font-size: 12px;
-  background: rgba(255, 255, 255, 0.7);
+  background: #faf8f7;
   backdrop-filter: blur(10px);
-  border: 1px solid #dee0e5;
+  @extend %border;
+  border: 1px solid white;
   border-radius: 5px;
   color: $textColor;
   visibility: hidden;
@@ -25,9 +26,9 @@
   &::before {
     content: '\25B2';
     position: absolute;
-    color: #dee0e5;
+    color: #cbcdd2;
     left: calc(50% - 4.5px);
-    bottom: -10px;
+    bottom: -10.5px;
     font-size: 9px;
     transform: rotate(180deg);
   }

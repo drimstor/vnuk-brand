@@ -1,0 +1,58 @@
+@use '/styles/_helpers' as *;
+
+.globalWrapper {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  @extend %scroll;
+  position: relative;
+}
+
+.wrapper {
+  padding-bottom: 100px;
+}
+
+.catalogWrapper {
+  padding-top: 120px;
+
+  @include tablet {
+    padding-top: 90px;
+  }
+}
+
+.title {
+  text-align: center;
+  @extend %f2;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.breadcrumbs {
+  display: flex;
+  gap: 19px;
+  padding: 0px 35px 20px;
+
+  @include mobile {
+    padding: 0 8px 20px;
+  }
+
+  li {
+    @extend %f2;
+    font-size: 13px;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: '/';
+      right: -12px;
+    }
+
+    &:last-child {
+      font-weight: 600;
+
+      &::before {
+        content: '';
+      }
+    }
+  }
+}
