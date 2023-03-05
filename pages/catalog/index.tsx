@@ -4,6 +4,7 @@ import Layout from '@/components/Layout/Layout';
 import React from 'react';
 import { iCatalog, iProduct } from '@/helpers/types';
 import axios from 'axios';
+import { PORT } from '@/helpers/constants';
 
 interface CatalogProps {
   catalogs: iCatalog[];
@@ -25,7 +26,7 @@ function Catalog({ catalogs }: CatalogProps) {
 export default Catalog;
 
 export async function getStaticProps() {
-  const res = await axios.get('http://localhost:3000/api/catalog');
+  const res = await axios.get(`/api/catalog`);
   const catalogs = await res.data;
 
   return {

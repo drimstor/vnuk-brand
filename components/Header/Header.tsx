@@ -42,11 +42,9 @@ function Header({ isHeaderAnimation }: HeaderProps) {
         </Link>
 
         <div className={clsx(s.navMenuBox, isShowBurgerMenu && s.show)}>
-          {media768 && (
-            <div className={s.navItem} onClick={() => setIsShowBurgerMenu(false)}>
-              <Link href={'/catalog'}>Каталог</Link>
-            </div>
-          )}
+          <div className={clsx(s.navItem, s.mobileElement)} onClick={() => setIsShowBurgerMenu(false)}>
+            <Link href="/catalog">Каталог</Link>
+          </div>
           {navList.map((listItem, index) => (
             <div className={s.navItem} key={listItem.name + index}>
               <Link href={listItem.link} onClick={() => showSubMenuItemHandler(index)}>

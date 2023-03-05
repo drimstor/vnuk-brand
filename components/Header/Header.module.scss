@@ -141,9 +141,9 @@
   align-items: center;
   z-index: 1;
   width: 150px;
-
   cursor: pointer;
   transition: 0.3s ease-in-out;
+  background: #faf8f7;
 
   @include tablet {
     width: 100%;
@@ -188,6 +188,14 @@
   }
 }
 
+.mobileElement {
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+}
+
 .subItemBox {
   z-index: 0;
   position: absolute;
@@ -212,6 +220,7 @@
     border-bottom: 1px solid rgb(199, 199, 199);
     border-top: 1px solid rgb(199, 199, 199);
     height: 0;
+    transition: 0.3s ease-in-out;
   }
 
   &.open {

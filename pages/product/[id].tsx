@@ -22,7 +22,7 @@ function Product({ currentProduct }: ProductProps) {
 export default Product;
 
 export async function getStaticPaths() {
-  const res = await axios.get(`${PORT}/api/product`);
+  const res = await axios.get(`/api/product`);
   const products = await res.data;
 
   const paths = products.map((product: iCatalog) => ({
@@ -33,7 +33,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const res = await axios.get(`${PORT}/api/product`);
+  const res = await axios.get(`/api/product`);
   const products = await res.data;
   const currentProduct = products.filter((product: iCatalog) => product.link.split('/').pop() === params.id)[0];
 

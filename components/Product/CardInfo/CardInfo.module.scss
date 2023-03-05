@@ -29,6 +29,10 @@
 
   button {
     margin-top: 24px;
+
+    @include tablet {
+      margin-top: 36px;
+    }
   }
 
   h1 {
@@ -117,7 +121,7 @@
     position: relative;
     right: auto;
     bottom: auto;
-    padding-top: 60px;
+    padding-top: 100px;
     margin: 0 auto;
   }
 

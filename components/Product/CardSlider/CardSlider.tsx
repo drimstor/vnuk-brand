@@ -54,10 +54,18 @@ function CardSlider({ images }: CardSliderProps) {
   };
 
   const onScrollHandler = () => {
-    if (imagesCarouselRef.current) {
-      if (!tablet) {
-        setActiveSlide(Math.round(imagesCarouselRef.current.scrollTop / slideSize));
-      }
+    if (!!debounce) {
+      clearTimeout(debounce);
+    }
+
+    if (!tablet) {
+      setDebounce(
+        setTimeout(
+          () =>
+            imagesCarouselRef.current && setActiveSlide(Math.round(imagesCarouselRef.current.scrollTop / slideSize)),
+          100
+        )
+      );
     }
   };
 
@@ -78,17 +86,13 @@ function CardSlider({ images }: CardSliderProps) {
   const onMouseUpHandler = () => {
     setIsDragging(false);
 
-    if (!!debounce) {
-      clearTimeout(debounce);
-    }
-
     if (startPosition.clientY - currentPosition.clientY < 100) {
       if (currentPosition.clientY - startPosition.clientY < 100) {
         const decr = activeSlide > 0 ? activeSlide - 1 : activeSlide;
         const incr = activeSlide === images.length - 1 ? activeSlide : activeSlide + 1;
         const slideAction = translateDirection ? incr : decr;
 
-        setDebounce(setTimeout(() => onClickToSlideHandler(slideAction), 50));
+        onClickToSlideHandler(slideAction);
       }
     }
   };
