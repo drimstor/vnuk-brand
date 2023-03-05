@@ -13,7 +13,7 @@ interface SubCatalogProps {
 
 function SubCatalog({ currentCatalog }: SubCatalogProps) {
   return (
-    <Layout>
+    <Layout pageTitle={currentCatalog?.title}>
       <BackButton isOnlyDesktop />
       <CatalogLayout title={currentCatalog?.title}>
         <CatalogBox items={currentCatalog?.items} />

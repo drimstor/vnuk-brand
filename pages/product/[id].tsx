@@ -11,7 +11,7 @@ interface ProductProps {
 
 function Product({ currentProduct }: ProductProps) {
   return (
-    <Layout isWithoutFooter isHeaderAnimation>
+    <Layout isWithoutFooter isHeaderAnimation pageTitle={currentProduct?.title}>
       <CardSlider images={currentProduct.images} />
       <CardInfo product={currentProduct} />
     </Layout>

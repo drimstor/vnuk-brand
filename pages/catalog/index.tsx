@@ -11,7 +11,7 @@ interface CatalogProps {
 
 function Catalog({ catalogs }: CatalogProps) {
   return (
-    <Layout>
+    <Layout pageTitle="Каталог">
       <CatalogLayout title="Каталог">
         {catalogs &&
           catalogs.map((catalog, index) => (
