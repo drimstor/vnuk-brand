@@ -35,9 +35,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const currentCatalog = catalogs.filter(
-    (catalog: iCatalog) => catalog.clothes === params.clothes && catalog.sex === params.sex
-  )[0];
+  const { sex, clothes } = params;
+
+  const currentCatalog =
+    catalogs.filter((catalog: iCatalog) => catalog.clothes === clothes && catalog.sex === sex)[0] || {};
 
   return {
     props: {

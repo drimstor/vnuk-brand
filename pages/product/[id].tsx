@@ -29,9 +29,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const currentProduct = products.filter(
-    (product: iCatalog | iProduct) => product.link.split('/').pop() === params.id
-  )[0];
+  const currentProduct =
+    products.filter((product: iCatalog | iProduct) => product.link.split('/').pop() === params.id)[0] || {};
 
   return {
     props: {
