@@ -27,7 +27,6 @@ function CatalogBox({ isShortVariant, title, items, link }: CatalogBoxProps) {
   const [currentPosition, setCurrentPosition] = useState({ clientX: 0, clientY: 0 });
   const [translateDirection, setTranslateDirection] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  const [debounce, setDebounce] = useState<any>(false);
 
   useEffect(() => {
     if (items) {

@@ -1,12 +1,11 @@
 import Image from 'next/image';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { TouchEvent, useEffect, useRef, useState } from 'react';
 import s from './CardSlider.module.scss';
 import clsx from 'clsx';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlassMinus, faMagnifyingGlassPlus } from '@fortawesome/free-solid-svg-icons';
 import { iProduct } from '@/helpers/types';
-import { useRouter } from 'next/router';
 import BackButton from '@/ui-kit/Buttons/BackButton';
 
 interface CardSliderProps {
@@ -14,7 +13,6 @@ interface CardSliderProps {
 }
 
 function CardSlider({ images }: CardSliderProps) {
-  const router = useRouter();
   const tablet = useMediaQuery('(max-width: 769px)');
   const imagesCarouselRef = useRef<HTMLDivElement>(null);
   const [slideSize, setSlideSize] = useState(0);
@@ -69,12 +67,12 @@ function CardSlider({ images }: CardSliderProps) {
     }
   };
 
-  const onMouseDownHandler = (e: any) => {
+  const onMouseDownHandler = (e: TouchEvent<HTMLDivElement>) => {
     setIsDragging(true);
     setStartPosition({ clientX: e.targetTouches[0].clientX, clientY: e.targetTouches[0].clientY });
   };
 
-  const onMouseMoveHandler = (e: any) => {
+  const onMouseMoveHandler = (e: TouchEvent<HTMLDivElement>) => {
     if (isDragging) {
       const currentPositionX = e.targetTouches[0].clientX;
       const currentPositionY = e.targetTouches[0].clientY;
@@ -83,17 +81,20 @@ function CardSlider({ images }: CardSliderProps) {
     }
   };
 
-  const onMouseUpHandler = () => {
+  const onMouseUpHandler = (e: TouchEvent<HTMLDivElement>) => {
     setIsDragging(false);
 
-    if (startPosition.clientY - currentPosition.clientY < 100) {
-      if (currentPosition.clientY - startPosition.clientY < 100) {
-        const decr = activeSlide > 0 ? activeSlide - 1 : activeSlide;
-        const incr = activeSlide === images.length - 1 ? activeSlide : activeSlide + 1;
-        const slideAction = translateDirection ? incr : decr;
+    if (
+      Math.round(e.changedTouches[0].pageX) !== Math.round(startPosition.clientX) &&
+      Math.round(e.changedTouches[0].pageY) !== Math.round(startPosition.clientY) &&
+      currentPosition.clientY - startPosition.clientY < 50 &&
+      startPosition.clientY - currentPosition.clientY < 50
+    ) {
+      const decr = activeSlide > 0 ? activeSlide - 1 : activeSlide;
+      const incr = activeSlide === images.length - 1 ? activeSlide : activeSlide + 1;
+      const slideAction = translateDirection ? incr : decr;
 
-        onClickToSlideHandler(slideAction);
-      }
+      onClickToSlideHandler(slideAction);
     }
   };
 
