@@ -1,0 +1,56 @@
+@use '/styles/_helpers' as *;
+
+.wrapper {
+  width: 23%;
+  min-width: 300px;
+  overflow: hidden;
+  border: 1px solid rgb(238, 237, 236);
+  margin: 0 10px;
+}
+
+.image {
+  background: #f3eeea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+
+  &.show img {
+    filter: blur(0);
+  }
+
+  img {
+    padding: 24px;
+    width: auto;
+    height: 400px;
+    filter: blur(3px);
+    transition: filter 0.3s ease-in-out;
+    transform: scale(1.1);
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 12px 8px rgba(255, 255, 255, 0.6) inset;
+
+    @include mobile {
+      box-shadow: none;
+    }
+  }
+}
+
+.text {
+  border-top: 1px solid #efefef;
+  padding: 14px;
+}
+
+.name {
+  @extend %f2;
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.price {
+  @extend %f2;
+  font-weight: 600;
+}

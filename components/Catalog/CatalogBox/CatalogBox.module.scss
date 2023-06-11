@@ -1,0 +1,133 @@
+@use '/styles/_helpers' as *;
+
+.wrapper {
+  padding-top: 16px;
+  position: relative;
+
+}
+
+.titleBox {
+  border-top: 1px solid rgb(238, 237, 236);
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 35px;
+
+  @include mobile {
+    padding: 25px 8px;
+  }
+
+  h2 {
+    @extend %f2;
+    font-weight: 400;
+  }
+}
+
+.sliderControlWrapper {
+  position: relative;
+
+  @media screen and (max-width: 1380px) {
+    width: fit-content;
+    margin: 0 auto;
+  }
+}
+
+.sliderWindow {
+  position: relative;
+  overflow: hidden;
+  // border: 1px solid;
+}
+
+.sliderCarousel {
+  width: 100%;
+  display: flex;
+  gap: 62px 0;
+  // overflow-x: scroll;
+  // @extend %scroll;
+  padding-bottom: 18px;
+  margin-bottom: 60px;
+  transition: 0.3s ease-in-out;
+
+  @media screen and (max-width: 1380px) {
+    width: 966px;
+    margin: 0 auto 60px;
+  }
+
+  @media screen and (max-width: 1068px) {
+    width: 643px;
+  }
+
+  @include tablet {
+    width: 320px;
+  }
+
+  @include mobile {
+    width: 320px;
+  }
+
+  &.fullView {
+    overflow: hidden;
+    flex-wrap: wrap;
+  }
+}
+
+.button {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 190px;
+  border-radius: 50%;
+  @extend %border;
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0.277);
+  backdrop-filter: blur(4px);
+  transition: 0.3s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  z-index: 2;
+
+  @include mobile {
+    width: 35px;
+    height: 35px;
+  }
+
+  &.transparent {
+    opacity: 0.5;
+  }
+
+  &.prevButton {
+    left: -30px;
+    transform: rotate(90deg);
+
+    @include mobile {
+      left: -15px;
+    }
+  }
+
+  &.nextButton {
+    right: -30px;
+    transform: rotate(-90deg);
+
+    @include mobile {
+      right: -15px;
+    }
+  }
+
+  &:hover {
+    @extend %border2;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+
+  img {
+    width: 50%;
+
+    @include mobile {
+      width: 35%;
+    }
+  }
+}

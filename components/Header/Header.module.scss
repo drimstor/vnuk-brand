@@ -1,0 +1,340 @@
+@use '/styles/_helpers' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  background: rgba(243, 238, 234, 0.6);
+  width: calc(100% - 8px);
+  height: 50px;
+  backdrop-filter: blur(13px);
+  display: grid;
+  grid-template-columns: 1fr 58px 1fr;
+  z-index: 9;
+  @extend %border;
+  transition: 0.3s ease-in-out;
+  padding: 0 20px;
+
+  &.animation {
+    top: -60px;
+    animation: showHeader 0.5s 0.5s ease-in-out forwards;
+  }
+
+  @include tablet {
+    height: 50px;
+    width: 100%;
+  }
+
+  h6 {
+    width: 95px;
+  }
+}
+
+.logo {
+  @extend %f3;
+  font-size: 36px;
+  user-select: none;
+  cursor: pointer;
+  margin-bottom: -4px;
+  align-self: center;
+
+  @include tablet {
+    font-size: 32px;
+  }
+}
+
+.nav {
+  position: relative;
+  width: 100px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+
+  a {
+    @extend %f2;
+    font-size: 15px;
+    display: flex;
+    font-weight: 500;
+    gap: 14px;
+    align-items: center;
+    height: 50px;
+
+    img {
+      margin-bottom: -2px;
+      transition: 0.3s ease-in-out;
+      width: 10px;
+      height: 10px;
+
+      @include tablet {
+        opacity: 0;
+      }
+    }
+  }
+
+  &:hover {
+    > a > img {
+      transform: rotate(180deg);
+    }
+
+    @media screen and (min-width: 769px) {
+      .navMenuBox {
+        opacity: 1;
+        visibility: visible;
+        filter: blur(0);
+      }
+    }
+  }
+}
+
+.backdrop {
+  width: 100vw;
+  height: calc(100vh - (50px + 90px));
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: calc(50px + 90px);
+  left: 0;
+  z-index: 1;
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  filter: blur(5px);
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    filter: blur(0);
+  }
+}
+
+.navMenuBox {
+  z-index: 0;
+  top: 50px;
+  left: -20px;
+  position: absolute;
+  width: calc(100vw - 8px);
+  height: fit-content;
+  @extend %border;
+  background: #faf8f7;
+  background: #f3eeea;
+  opacity: 0;
+  visibility: hidden;
+  filter: blur(5px);
+  transition: 0.3s ease-in-out;
+
+  @include tablet {
+    opacity: 1;
+    visibility: visible;
+    filter: blur(0);
+    width: 100vw;
+    height: 0;
+    overflow: hidden;
+  }
+
+  &.show {
+    height: 100vh;
+  }
+}
+
+.navItem {
+  @extend %f2;
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  width: 150px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  background: #faf6f5;
+
+  @include tablet {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  > a {
+    padding-left: 20px;
+    border-bottom: 1px solid rgb(238, 237, 236);
+    border-right: 1px solid rgb(238, 237, 236);
+    height: 45px;
+    width: 150px;
+    padding-left: 20px;
+    width: 100%;
+    padding-right: 14px;
+    justify-content: space-between;
+
+    img {
+      transform: rotate(0deg);
+    }
+  }
+
+  @media screen and (min-width: 769px) {
+    &:hover {
+      background: rgba(211, 207, 204, 0.3);
+
+      > a > img {
+        transform: rotate(-90deg);
+      }
+
+      .subItemBox {
+        opacity: 1;
+        visibility: visible;
+        filter: blur(0px);
+        left: 150px;
+      }
+    }
+
+    &:active {
+      background: rgba(211, 207, 204, 0.7);
+    }
+  }
+}
+
+.mobileElement {
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+.subItemBox {
+  z-index: 0;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  top: 0px;
+  left: 130px;
+  @extend %border;
+  background: #faf8f7;
+  filter: blur(5px);
+  transition: 0.3s ease-in-out;
+  display: flex;
+
+  @include tablet {
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    box-shadow: none;
+    border-bottom: 1px solid rgb(199, 199, 199);
+    border-top: 1px solid rgb(199, 199, 199);
+    height: 0;
+    transition: 0.3s ease-in-out;
+  }
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    filter: blur(0px);
+  }
+
+  li {
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 150px;
+    border-right: 1px solid rgb(238, 237, 236);
+
+    @include tablet {
+      width: 100%;
+      padding-left: 40px;
+      justify-content: flex-start;
+      border-right: none;
+      border-bottom: 1px solid rgb(238, 237, 236);
+    }
+
+    a {
+      height: 45px;
+      width: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include tablet {
+        justify-content: flex-start;
+      }
+    }
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    @media screen and (min-width: 769px) {
+      &:hover {
+        background: rgba(211, 207, 204, 0.6);
+      }
+    }
+
+    &:active {
+      background: rgba(203, 199, 197, 0.921);
+    }
+  }
+}
+
+.catalogButton {
+  @include tablet {
+    display: none !important;
+  }
+}
+
+.burgerButton {
+  display: none;
+  position: relative;
+  width: 28px;
+  height: 19px;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+.burgerButton span,
+.burgerButton:before,
+.burgerButton:after {
+  content: '';
+  background-color: black;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out, bottom 0.3s ease-in-out;
+}
+.burgerButton span {
+  top: 8px;
+}
+
+.burgerButton:before {
+  top: 0px;
+}
+.burgerButton:after {
+  bottom: 0px;
+}
+
+.burgerButton.active:before {
+  transform: rotate(45deg);
+  top: 8px;
+}
+.burgerButton.active:after {
+  transform: rotate(-45deg);
+  bottom: 8px;
+}
+.burgerButton.active span {
+  transform: scale(0);
+}
+
+@keyframes showHeader {
+  0% {
+    top: -60px;
+  }
+  100% {
+    top: 0px;
+  }
+}

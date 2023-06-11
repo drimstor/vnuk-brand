@@ -1,0 +1,33 @@
+@use '/styles/_helpers' as *;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: #212121;
+  overflow: hidden;
+  max-width: 100vw;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+.wrapper {
+  width: calc(100vw - 100px);
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+
+  @include mobile {
+    width: calc(100vw - 40px);
+  }
+}

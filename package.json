@@ -1,0 +1,40 @@
+{
+  "name": "vnuk-brand",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ./components/** ./pages/** -c .eslintrc --ext ts,tsx,js,jsx --color",
+    "format": "prettier --write 'components/**/*.{ts,tsx,scss,css,json}' 'pages/**/*.{ts,tsx,scss,css,json}'"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-regular-svg-icons": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@next/font": "13.1.6",
+    "@types/node": "18.14.0",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "18.0.11",
+    "axios": "^1.3.4",
+    "clsx": "^1.2.1",
+    "next": "13.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-double-marquee": "^1.1.0",
+    "sass": "^1.58.3",
+    "typescript": "4.9.5",
+    "vanilla-tilt": "^1.8.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.1",
+    "eslint": "8.34.0",
+    "eslint-config-next": "13.1.6",
+    "eslint-plugin-prettier": "4.2.1",
+    "prettier": "2.8.4",
+    "prettier-eslint": "15.0.1",
+    "prettier-eslint-cli": "7.1.0"
+  }
+}

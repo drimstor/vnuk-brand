@@ -1,0 +1,168 @@
+@use '/styles/_helpers' as *;
+
+.wrapper {
+  position: fixed;
+  right: 15%;
+  top: 47%;
+  width: fit-content;
+  min-width: 320px;
+  max-width: 400px;
+  transform: translate(0, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+  filter: blur(5px);
+  animation: showHeader 0.3s 0.7s ease-in-out forwards;
+
+  @include tablet {
+    position: relative;
+    right: auto;
+    top: 250px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+    max-width: 300px;
+
+    button {
+      margin: 0 auto;
+    }
+  }
+
+  button {
+    margin-top: 24px;
+
+    @include tablet {
+      margin-top: 36px;
+    }
+  }
+
+  h1 {
+    @extend %f1;
+    font-size: 32px;
+    line-height: 110%;
+    margin-bottom: 8px;
+  }
+
+  .description {
+    font-weight: 400;
+    @extend %f2;
+    line-height: 130%;
+  }
+
+  .price {
+    @extend %f2;
+    margin-bottom: 24px;
+    line-height: 130%;
+  }
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+
+  .text {
+    width: 80px;
+    @extend %f2;
+    font-size: 12px;
+    font-weight: 300;
+  }
+}
+
+.materialText {
+  @extend %f2;
+  font-size: 14px;
+}
+
+.circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  @extend %border;
+  overflow: hidden;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @extend %f2;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.277);
+  transition: 0.3s;
+  text-transform: uppercase;
+
+  &:active {
+    opacity: 0.8;
+    transform: scale(0.9);
+  }
+
+  &:hover {
+    @extend %border2;
+  }
+
+  &.active {
+    @extend %border2;
+    border: 1px solid rgba(169, 169, 169, 0.707);
+  }
+
+  img {
+    width: 110%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+.bottomMenu {
+  position: fixed;
+  display: flex;
+  gap: 24px;
+  bottom: -25px;
+  right: 17%;
+  width: fit-content;
+  transition: 0.3s ease-in-out;
+  animation: showBottomMenu 0.5s 0.5s ease-in-out forwards;
+
+  @include tablet {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    padding-top: 70px;
+    margin: 0 auto;
+  }
+
+  li {
+    color: rgb(162, 162, 162);
+    font-size: 12px;
+    @extend %f2;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      color: black;
+    }
+  }
+}
+
+@keyframes showBottomMenu {
+  0% {
+    bottom: -25px;
+  }
+  100% {
+    bottom: 25px;
+  }
+}
+
+@keyframes showHeader {
+  0% {
+    opacity: 0;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
