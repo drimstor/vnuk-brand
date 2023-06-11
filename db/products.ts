@@ -48,19 +48,21 @@ import item9img2 from '@/public/products/black-print-jacket/img2.png';
 import item9img3 from '@/public/products/black-print-jacket/img3.png';
 import item9img4 from '@/public/products/black-print-jacket/img4.png';
 import item9color from '@/public/products/black-print-jacket/color.png';
-import item10img1 from '@/public/products/red-bodysuit/img1.png';
-import item10img2 from '@/public/products/red-bodysuit/img2.png';
-import item10img3 from '@/public/products/red-bodysuit/img3.png';
-import item10img4 from '@/public/products/red-bodysuit/img4.png';
-import item10img5 from '@/public/products/red-bodysuit/img5.png';
-import item10color from '@/public/products/red-bodysuit/color.png';
-import item11img1 from '@/public/products/sequin-silver-dress/img1.png';
-import item11img2 from '@/public/products/sequin-silver-dress/img2.png';
-import item11img3 from '@/public/products/sequin-silver-dress/img3.png';
-import item11img4 from '@/public/products/sequin-silver-dress/img4.png';
-import item11img5 from '@/public/products/sequin-silver-dress/img5.png';
-import item11img6 from '@/public/products/sequin-silver-dress/img6.png';
-import item11img7 from '@/public/products/sequin-silver-dress/img7.png';
+import item11img1 from '@/public/products/red-bodysuit/img1.png';
+import item11img2 from '@/public/products/red-bodysuit/img2.png';
+import item11img3 from '@/public/products/red-bodysuit/img3.png';
+import item11img4 from '@/public/products/red-bodysuit/img4.png';
+import item11img5 from '@/public/products/red-bodysuit/img5.png';
+import item11color from '@/public/products/red-bodysuit/color.png';
+import item12img1 from '@/public/products/sequin-silver-dress/img1.png';
+import item12img2 from '@/public/products/sequin-silver-dress/img2.png';
+import item12img3 from '@/public/products/sequin-silver-dress/img3.png';
+import item12img4 from '@/public/products/sequin-silver-dress/img4.png';
+import item12img5 from '@/public/products/sequin-silver-dress/img5.png';
+import item12img6 from '@/public/products/sequin-silver-dress/img6.png';
+import item12img7 from '@/public/products/sequin-silver-dress/img7.png';
+import item12color from '@/public/products/sequin-silver-dress/color.png';
+
 import item13img1 from '@/public/products/long-coat-print/img1.png';
 import item13img2 from '@/public/products/long-coat-print/img2.png';
 import item13img3 from '@/public/products/long-coat-print/img3.png';
@@ -213,12 +215,12 @@ export const products: iProduct[] = [
     description: 'Боди из тонкого хлопкового трикотажа',
     price: '12 800',
     sex: 'women',
-    color: { name: 'Красный', color: item10color },
+    color: { name: 'Красный', color: item11color },
     material: { name: 'Трикотаж', material: item4material },
     sizes: ['хs', 's', 'm'],
     clothes: 'bodysuits',
     link: '/product/red-bodysuit',
-    images: [item10img1, item10img2, item10img3, item10img4, item10img5],
+    images: [item11img1, item11img2, item11img3, item11img4, item11img5],
   },
   {
     id: 12,
@@ -226,12 +228,12 @@ export const products: iProduct[] = [
     description: 'Платье с пайетками на тонком шерстяном трикотаже',
     price: '48 000',
     sex: 'women',
-    color: { name: 'Разноцветный', color: item1color },
-    material: { name: 'Шерстяной трикотаж с пайетками', material: item1color },
+    color: { name: 'Серебро', color: item12color },
+    material: { name: 'Шерстяной трикотаж с пайетками', material: item12color },
     sizes: ['хs/s'],
     clothes: 'dresses',
     link: '/product/sequin-silver-dress',
-    images: [item11img1, item11img2, item11img3, item11img4, item11img5, item11img6, item11img7],
+    images: [item12img1, item12img2, item12img3, item12img4, item12img5, item12img6, item12img7],
   },
   {
     id: 13,
