@@ -2,6 +2,8 @@ import { catalogs } from '@/db/catalogs';
 import vkIcon from '@/ui-kit/Other/vk.svg';
 import instIcon from '@/ui-kit/Other/instagram.svg';
 import phoneIcon from '@/ui-kit/Other/phone.svg';
+import telegramIcon from '@/ui-kit/Other/telegram.svg';
+import whatsappIcon from '@/ui-kit/Other/whatsapp.svg';
 
 export const navList = [
   {
@@ -63,12 +65,24 @@ export const footerLinks = [
     title: 'Контакты',
     links: [
       {
+        name: '',
+        link: '',
+      },
+      {
         name: phoneIcon,
         link: 'tel:+7 (918) 184-06-93',
       },
       {
         name: instIcon,
         link: 'https://www.instagram.com/vnukbrand/',
+      },
+      {
+        name: telegramIcon,
+        link: 'https://t.me/+79181840693',
+      },
+      {
+        name: whatsappIcon,
+        link: 'https://wa.me/79181840693',
       },
       {
         name: vkIcon,

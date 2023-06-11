@@ -10,11 +10,11 @@ function Footer() {
     <footer className={s.footer}>
       <div className={clsx('wrapper', s.wrapper)}>
         {footerLinks.map((list, index) => (
-          <ul className={s.list} key={index}>
+          <ul className={clsx(s.list, list.title === 'Контакты' && s.contacts)} key={index}>
             <h3>{list.title}</h3>
             {list.links.map((link, index) => (
               <li key={-index}>
-                <Link href={link.link}>
+                <Link href={link.link} target={list.title === 'Контакты' ? '_blank' : '_self'}>
                   {typeof link.name === 'string' ? link.name : <Image src={link.name} alt="vk" />}
                 </Link>
               </li>
