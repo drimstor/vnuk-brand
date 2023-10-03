@@ -16,6 +16,10 @@ export const navList = [
     link: '#',
     subList: catalogs.filter((item) => item.sex === 'men'),
   },
+  {
+    title: 'Press release collection 2024',
+    link: '/press-release2023-24',
+  },
 ];
 
 export const footerLinks = [

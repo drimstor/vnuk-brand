@@ -50,7 +50,7 @@ function Header({ isHeaderAnimation }: HeaderProps) {
           {navList.map((listItem, index) => (
             <div className={s.navItem} key={listItem.title + index}>
               <Link href={listItem.link} onClick={() => showSubMenuItemHandler(index)}>
-                {listItem.title} <Image src={arrowIcon} alt="arrow" />
+                {listItem.title} {listItem.subList && <Image src={arrowIcon} alt="arrow" />}
               </Link>
               {listItem.subList && (
                 <ul

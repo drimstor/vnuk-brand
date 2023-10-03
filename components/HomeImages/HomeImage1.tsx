@@ -28,7 +28,8 @@ function HomeImage1() {
       />
       <Tilt className={clsx(styles.textWrapper, isHideLoader && styles.showBlock)}>
         <h3>
-          Collection <br /> Resort Spring-Summer 2023
+          Festive autumn-winter 2023/24
+          <br /> collection
         </h3>
         <Button isLink href="/catalog" size="small" variant="contained">
           В каталог
