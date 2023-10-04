@@ -12,12 +12,14 @@ interface iButton {
   error?: boolean;
   isLink?: boolean;
   href?: string;
+  targetBlank?: boolean;
 }
 
-function Button({ children, variant, size, onClick, typeSubmit, error, isLink, href }: iButton) {
+function Button({ children, variant, size, onClick, targetBlank, typeSubmit, error, isLink, href }: iButton) {
   if (isLink) {
     return (
       <Link
+        target={targetBlank ? '_blank' : '_self'}
         type={typeSubmit ? 'submit' : 'button'}
         className={clsx(s[size], s[variant], error && s.error)}
         href={href ?? '#'}

@@ -53,7 +53,7 @@ function CardInfo({ product }: CardInfoProps) {
           ))}
         </div>
 
-        <Button size="small" variant="contained">
+        <Button size="small" isLink href="https://ig.me/m/vnukbrand" variant="contained">
           Купить
         </Button>
       </div>
