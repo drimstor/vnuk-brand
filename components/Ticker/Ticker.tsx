@@ -9,6 +9,9 @@ interface iTiker {
   color: string;
 }
 
+export const tickerText =
+  ' VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND VNUK BRAND ';
+
 function Ticker({ text, direction, background, color }: iTiker) {
   return (
     <div className={styles.tikerBox} style={{ background: background }}>

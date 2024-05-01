@@ -1,11 +1,12 @@
 @use '/styles/_helpers' as *;
 
 .tikerBox {
-  width: 105%;
+  width: 110%;
   height: 45px;
   background: #f3eeea;
   z-index: 1;
   position: relative;
+  margin-top: -5px;
 
   span {
     color: #000000;
@@ -14,5 +15,26 @@
     white-space: nowrap;
     line-height: 150%;
     user-select: none;
+  }
+}
+
+.tiker1Box {
+  transform: translateY(-40px) rotate(-3deg);
+  margin-bottom: -45px;
+  z-index: 2;
+  position: relative;
+
+  @include tablet {
+    transform: translateY(-40px) translateX(-10px) rotate(-8deg);
+  }
+}
+
+.tiker2Box {
+  transform: translateY(40px) rotate(4deg);
+  margin-top: -45px;
+  margin-left: -10px;
+
+  @include tablet {
+    transform: translateY(40px) rotate(12deg);
   }
 }
