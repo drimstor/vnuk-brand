@@ -39,7 +39,7 @@ jobs:
 
       - name: Set PATH environment variable
         run: |
-          echo "$(<.env.release)" >> $GITHUB_ENV
+         export PATH=$PATH:/root/.nvm/versions/node/v18.16.0/bin/
 
       - name: Add host key to known hosts
         run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
