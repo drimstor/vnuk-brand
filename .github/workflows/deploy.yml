@@ -6,6 +6,26 @@ on:
       - main
 
 jobs:
+  Build:
+    runs-on: ubuntu-latest
+    strategy: 
+      matrix: 
+        node-version: [ 18.x ]
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@v3
+        
+      - name: Starting Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with: 
+          node-version: ${{ matrix.node-version }}
+
+      # - name: Install Modules
+      #   run: npm install
+
+      # - name: Build Project
+      #   run: npm run build
+
   Tests:
     runs-on: ubuntu-latest
     strategy: 
@@ -29,25 +49,6 @@ jobs:
       # - name: Format Test
       #   run: npm run format
 
-  Build:
-    runs-on: ubuntu-latest
-    strategy: 
-      matrix: 
-        node-version: [ 18.x ]
-    steps:
-      - name: Clone Repository
-        uses: actions/checkout@v3
-        
-      - name: Starting Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with: 
-          node-version: ${{ matrix.node-version }}
-
-      # - name: Install Modules
-      #   run: npm install
-
-      # - name: Build Project
-      #   run: npm run build
 
   Deploy:
     runs-on: ubuntu-latest
@@ -69,32 +70,7 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      # - name: Add host key to known hosts
-      #   run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
-      #   env:
-      #     SERVER_IP: ${{ secrets.HOST }}
       
-          # - name: Deploy Application
-          # run: |
-          #   ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
-          #     set -e
-          #     export PATH=$PATH:${{ matrix.path }}
-          #     cd vnuk-brand || exit 1
-          #     echo "Stopping pm2 process..."
-          #     pm2 stop vnuk || exit 1
-          #     echo "Pulling latest changes..."
-          #     git pull || exit 1
-          #     echo "Installing dependencies..."
-          #     npm install || exit 1
-          #     echo "Building application..."
-          #     npm run build || exit 1
-          #     echo "Restarting pm2 process..."
-          #     pm2 restart vnuk || exit 1
-          #   EOF
-  
-            
-
       - name: Deploy Application
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
@@ -103,4 +79,12 @@ jobs:
             cd vnuk-brand || exit 1
             echo "Stopping pm2 process..."
             pm2 stop vnuk || exit 1
+            echo "Pulling latest changes..."
+            git pull || exit 1
+            echo "Installing dependencies..."
+            npm install || exit 1
+            echo "Building application..."
+            npm run build || exit 1
+            echo "Restarting pm2 process..."
+            pm2 restart vnuk || exit 1
           EOF
