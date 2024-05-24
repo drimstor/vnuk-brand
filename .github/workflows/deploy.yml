@@ -41,11 +41,8 @@ jobs:
       - name: List directory
         run: ls -la
 
-      - name: List build directory
-        run: ls -la .next
-
       - name: Copy Files to Server
-        run: scp -o StrictHostKeyChecking=no -r .next ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand
+        run: scp -o StrictHostKeyChecking=no -r . ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand
 
       - name: Restart application using PM2
-        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "pm2 reload vnuk"
+        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "pm2 restart vnuk"
