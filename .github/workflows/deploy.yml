@@ -1,0 +1,55 @@
+name: Release CD
+
+on:
+  push:
+    branches:
+      [ main ]
+  pull_request:
+    branches:
+      [ main ]
+
+jobs:
+  deployment_release:
+    runs-on: ubuntu-latest
+    strategy: 
+      matrix: 
+        node-version: [ 18.x ]
+        path: [ /root/.nvm/versions/node/v18.16.0/bin/ ]
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@v3
+        
+      - name: Starting Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with: 
+          node-version: ${{ matrix.node-version }}
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Install Modules
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+
+      - name: ESLint Test
+        run: npm run lint
+
+      - name: Format Test
+        run: npm run format
+
+      - name: Add host key to known hosts
+        run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+        env:
+          SERVER_IP: ${{ secrets.HOST }}
+
+      - name: Copy Files to Server
+        run: rsync -a next.config.js tsconfig.json .next package.json node_modules  ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand
+
+        # run: rsync -av --delete --exclude=.git/ --exclude=node_modules/ --exclude=.next/ ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand/
+
+      - name: Restart application using PM2
+        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "${{ matrix.path }}node ${{ matrix.path }}pm2 restart vnuk"
