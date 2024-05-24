@@ -38,6 +38,11 @@ jobs:
       - name: List directory
         run: ls -la
 
+      - name: Add host key to known hosts
+        run: ssh-keyscan -H <server_ip> >> ~/.ssh/known_hosts
+        env:
+          SERVER_IP: ${{ secrets.HOST }}
+
       - name: Copy Files to Server
         run: rsync -a next.config.js tsconfig.json .next package.json node_modules  -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand
 
