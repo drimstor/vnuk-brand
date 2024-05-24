@@ -76,17 +76,17 @@ jobs:
           SERVER_IP: ${{ secrets.HOST }}
           
       - name: Stop working
-        run: ssh -o StrictHostKeyChecking=no root@${{ secrets.HOST }} "pm2 stop vnuk"
+        run: ssh -o StrictHostKeyChecking=no root@${{ secrets.HOST }} "export PATH=$PATH:${{ matrix.path }} && pm2 stop vnuk"
 
       - name: Get changes
         run: ssh -o StrictHostKeyChecking=no root@${{ secrets.HOST }} "cd * && git pull"
 
       - name: Local build
-        run: ssh -o StrictHostKeyChecking=no root@${{ secrets.HOST }} "${{ matrix.path }}node ${{ matrix.path }}npm run build"
+        run: ssh -o StrictHostKeyChecking=no root@${{ secrets.HOST }} "export PATH=$PATH:${{ matrix.path }} && npm run build"
           
 
       # - name: Copy Files to Server
       #   run: rsync -a next.config.js tsconfig.json .next package.json node_modules root@${{ secrets.HOST }}:/vnuk-brand
 
       - name: Restart application using PM2
-        run: ssh -o StrictHostKeyChecking=no root@${{ secrets.HOST }} "${{ matrix.path }}node ${{ matrix.path }}pm2 restart vnuk"
+        run: ssh -o StrictHostKeyChecking=no root@${{ secrets.HOST }} "export PATH=$PATH:${{ matrix.path }} && pm2 restart vnuk"
