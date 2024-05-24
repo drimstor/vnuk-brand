@@ -12,6 +12,8 @@ interface CardSliderProps {
   images: iProduct['images'];
 }
 
+type Timer = ReturnType<typeof setTimeout>;
+
 function CardSlider({ images }: CardSliderProps) {
   const tablet = useMediaQuery('(max-width: 769px)');
   const imagesCarouselRef = useRef<HTMLDivElement>(null);
@@ -22,7 +24,7 @@ function CardSlider({ images }: CardSliderProps) {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [translateDirection, setTranslateDirection] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  const [debounce, setDebounce] = useState<any>(false);
+  const [debounce, setDebounce] = useState<Timer | false>(false);
   const [isZoom, setIsZoom] = useState(false);
   const [loadedImages, setLoadedImages] = useState<number[]>([]);
 
@@ -34,7 +36,7 @@ function CardSlider({ images }: CardSliderProps) {
         setSlideSize(imagesCarouselRef.current.scrollHeight / images.length);
       }
     }
-  }, []);
+  }, [images.length, tablet]);
 
   const scrollToSlide = (index: number) => {
     if (imagesCarouselRef.current) {
@@ -52,7 +54,7 @@ function CardSlider({ images }: CardSliderProps) {
   };
 
   const onScrollHandler = () => {
-    if (!!debounce) {
+    if (debounce) {
       clearTimeout(debounce);
     }
 

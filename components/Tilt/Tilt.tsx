@@ -3,20 +3,20 @@ import VanillaTilt from 'vanilla-tilt';
 
 interface iTilt {
   children: ReactNode;
-  options?: any;
   className?: string;
 }
 
-function Tilt({ children, options, ...rest }: iTilt) {
-  const tilt = useRef<any>(null);
+function Tilt({ children, ...rest }: iTilt) {
+  const tilt = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    VanillaTilt.init(tilt.current, {
-      speed: 500,
-      max: 20,
-      ...options,
-    });
-  }, [options]);
+    if (tilt.current) {
+      VanillaTilt.init(tilt.current, {
+        speed: 500,
+        max: 20,
+      });
+    }
+  }, []);
 
   return (
     <div ref={tilt} {...rest}>

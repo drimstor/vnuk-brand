@@ -41,13 +41,13 @@ function CatalogBox({ isShortVariant, title, items, link }: CatalogBoxProps) {
 
       setShowButton({ isShowButton, itemsLength });
     }
-  }, [media1380, media1068, media768]);
+  }, [media1380, media1068, media768, items]);
 
   useEffect(() => {
     if (carouselRef.current && items) {
       setSlideSize(Math.round(carouselRef.current.scrollWidth / items.length));
     }
-  }, []);
+  }, [items]);
 
   const scrollToPrevSlide = () => {
     if (isShortVariant && scrollLeft !== 0) {

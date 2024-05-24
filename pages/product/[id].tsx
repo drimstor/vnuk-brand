@@ -4,6 +4,7 @@ import Layout from '@/components/Layout/Layout';
 import React from 'react';
 import { iCatalog, iProduct } from '@/helpers/types';
 import { products } from '@/db/products';
+import { GetStaticProps } from 'next';
 
 interface ProductProps {
   currentProduct: iProduct;
@@ -28,13 +29,16 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params }: any) {
+export const getStaticProps: GetStaticProps<
+  { currentProduct: iCatalog | iProduct | Record<string, unknown> },
+  { id: string }
+> = async ({ params }) => {
   const currentProduct =
-    products.filter((product: iCatalog | iProduct) => product.link.split('/').pop() === params.id)[0] || {};
+    products.filter((product: iCatalog | iProduct) => product.link.split('/').pop() === params?.id)[0] || {};
 
   return {
     props: {
       currentProduct,
     },
   };
-}
+};

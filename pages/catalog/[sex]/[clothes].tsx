@@ -6,9 +6,16 @@ import { iCatalog } from '@/helpers/types';
 import BackButton from '@/ui-kit/Buttons/BackButton';
 import { catalogs } from '@/db/catalogs';
 import { sexValues } from '@/db/products';
+import { GetStaticProps } from 'next';
 
 interface SubCatalogProps {
   currentCatalog?: iCatalog;
+}
+
+interface Params {
+  sex: string;
+  clothes: string;
+  [key: string]: string;
 }
 
 function SubCatalog({ currentCatalog }: SubCatalogProps) {
@@ -36,7 +43,13 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params }: any) {
+export const getStaticProps: GetStaticProps<SubCatalogProps, Params> = async ({ params }) => {
+  if (!params) {
+    return {
+      notFound: true,
+    };
+  }
+
   const { sex, clothes } = params;
 
   const currentCatalog = catalogs.filter((catalog: iCatalog) => catalog.clothes === clothes && catalog.sex === sex)[0];
@@ -46,4 +59,4 @@ export async function getStaticProps({ params }: any) {
       currentCatalog,
     },
   };
-}
+};
