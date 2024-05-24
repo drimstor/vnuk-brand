@@ -76,7 +76,7 @@ jobs:
           SERVER_IP: ${{ secrets.HOST }}
           
       - name: Stop working
-        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "${{ matrix.path }}node ${{ matrix.path }}pm2 stop vnuk"
+        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "${{ matrix.path }}node ${{ matrix.path }}pm2 stop vnuk && cd *"
 
       - name: Get changes
         run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "git pull"
