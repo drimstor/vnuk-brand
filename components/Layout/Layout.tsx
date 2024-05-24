@@ -18,7 +18,7 @@ function Layout({ children, isWithoutFooter, isHeaderAnimation, pageTitle }: Lay
         <title>{pageTitle}</title>
       </Head>
       <div className={s.globalWrapper}>
-        <Header isHeaderAnimation={isHeaderAnimation} />
+        {/* <Header isHeaderAnimation={isHeaderAnimation} /> */}
         {children}
         {!isWithoutFooter && <Footer />}
       </div>
