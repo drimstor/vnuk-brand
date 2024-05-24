@@ -63,11 +63,10 @@ jobs:
         run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy Application
-        env:
-          PATH: $PATH:/root/.nvm/versions/node/v18.16.0/bin/
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
             set -e
+            export PATH=$PATH:/root/.nvm/versions/node/v18.16.0/bin/
             cd vnuk-brand || exit 1
             echo "Stopping pm2 process..."
             pm2 stop vnuk || exit 1
