@@ -37,8 +37,9 @@ jobs:
       - name: Format Test
         run: npm run format
 
-      - name: List directory
-        run: ls -la
+      - name: Set PATH environment variable
+        run: |
+          echo "$(<.env.release)" >> $GITHUB_ENV
 
       - name: Add host key to known hosts
         run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
@@ -51,4 +52,4 @@ jobs:
         run: rsync -av --delete --exclude=.git/ --exclude=node_modules/ --exclude=.next/ ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand/
 
       - name: Restart application using PM2
-        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "/root/.nvm/versions/node/v18.16.0/bin/node /root/.nvm/versions/node/v18.16.0/bin/pm2 restart vnuk"
+        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "pm2 stop vnuk"
