@@ -42,7 +42,7 @@ jobs:
         run: ls -la
 
       - name: Copy Files to Server
-        run: scp -o StrictHostKeyChecking=no -r . ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand
+        run: scp -o StrictHostKeyChecking=no -r * ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand
 
       - name: Restart application using PM2
         run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "pm2 restart vnuk"
