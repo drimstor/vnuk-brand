@@ -30,5 +30,13 @@ jobs:
       - name: Format Test
         run: npm run format
 
-      # - run: pm2 reload asnextrel
-      # - run: pm2 reload asnextrel
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Copy Files to Server
+        run: scp -o StrictHostKeyChecking=no -r ./build ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand
+
+      - name: Restart application using PM2
+        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "pm2 reload vnuk"
