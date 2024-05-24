@@ -49,4 +49,4 @@ jobs:
         # run: rsync -av --delete --exclude=.git/ --exclude=node_modules/ --exclude=.next/ ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand/
 
       - name: Restart application using PM2
-        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "${{ matrix }}node ${{ matrix }}pm2 stop vnuk"
+        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "${{ matrix.path }}node ${{ matrix.path }}pm2 stop vnuk"
