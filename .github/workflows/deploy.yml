@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy: 
       matrix: 
-        node-version: [ 20.x ]
+        node-version: [ 18.x ]
     steps:
       - uses: actions/checkout@v3
       - name: Starting Node.js ${{ matrix.node-version }}
@@ -41,8 +41,12 @@ jobs:
       - name: List directory
         run: ls -la
 
+      # - name: Copy Files to Server
+      #   run: scp -o StrictHostKeyChecking=no -r * ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand
       - name: Copy Files to Server
-        run: scp -o StrictHostKeyChecking=no -r * ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand
+        run: rsync -a next.config.js tsconfig.json .next package.json node_modules ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand/
+
+        # run: rsync -av --delete --exclude=.git/ --exclude=node_modules/ --exclude=.next/ ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand/
 
       - name: Restart application using PM2
         run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "pm2 restart vnuk"
