@@ -44,7 +44,7 @@ jobs:
           SERVER_IP: ${{ secrets.HOST }}
 
       - name: Copy Files to Server
-        run: rsync -o StrictHostKeyChecking=no -a next.config.js tsconfig.json .next package.json node_modules  ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand
+        run: rsync -a next.config.js tsconfig.json .next package.json node_modules  ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand
 
         # run: rsync -av --delete --exclude=.git/ --exclude=node_modules/ --exclude=.next/ ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand/
 
