@@ -20,8 +20,8 @@ jobs:
         with: 
           node-version: ${{ matrix.node-version }}
 
-      - name: Install Modules
-        run: npm install
+      # - name: Install Modules
+      #   run: npm install
 
       - name: ESLint Test
         run: npm run lint
@@ -43,11 +43,11 @@ jobs:
         with: 
           node-version: ${{ matrix.node-version }}
 
-      - name: Install Modules
-        run: npm install
+      # - name: Install Modules
+      #   run: npm install
 
-      - name: Build Project
-        run: npm run build
+      # - name: Build Project
+      #   run: npm run build
 
   Deploy:
     runs-on: ubuntu-latest
@@ -79,10 +79,10 @@ jobs:
         run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "${{ matrix.path }}node ${{ matrix.path }}pm2 stop vnuk"
 
       - name: Get changes
-        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "${{ matrix.path }}node ${{ matrix.path }}git pull"
+        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "git pull"
 
       - name: Local build
-        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "${{ matrix.path }}node ${{ matrix.path }}npm run build"
+        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "npm run build"
           
 
       # - name: Copy Files to Server
