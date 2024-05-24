@@ -24,7 +24,7 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Test SSH Connection
-        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "whoami"
+        run: ssh root@188.68.223.142 "whoami"
 
 
       # - name: Install Modules
