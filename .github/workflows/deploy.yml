@@ -23,9 +23,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Update files from GitHub
-        run: git pull origin release
-
       - name: Install Modules
         run: npm install
 
@@ -41,12 +38,10 @@ jobs:
       - name: List directory
         run: ls -la
 
-      # - name: Copy Files to Server
-      #   run: scp -o StrictHostKeyChecking=no -r * ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand
       - name: Copy Files to Server
-        run: rsync -a next.config.js tsconfig.json .next package.json node_modules ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand/
+        # run: rsync -a next.config.js tsconfig.json .next package.json node_modules ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand
 
-        # run: rsync -av --delete --exclude=.git/ --exclude=node_modules/ --exclude=.next/ ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand/
+        run: rsync -av --delete --exclude=.git/ --exclude=node_modules/ --exclude=.next/ ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/vnuk-brand/
 
       - name: Restart application using PM2
         run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "pm2 restart vnuk"
