@@ -82,7 +82,7 @@ jobs:
         run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd * && git pull"
 
       - name: Local build
-        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "npm run build"
+        run: ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "${{ matrix.path }}npm run build"
           
 
       # - name: Copy Files to Server
