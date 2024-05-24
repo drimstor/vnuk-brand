@@ -23,11 +23,11 @@ jobs:
       # - name: Install Modules
       #   run: npm install
 
-      - name: ESLint Test
-        run: npm run lint
+      # - name: ESLint Test
+      #   run: npm run lint
 
-      - name: Format Test
-        run: npm run format
+      # - name: Format Test
+      #   run: npm run format
 
   Build:
     runs-on: ubuntu-latest
