@@ -65,4 +65,25 @@ export const catalogs: iCatalog[] = [
     link: '/catalog/men/suits',
     items: products.filter((product: iProduct) => product.sex === 'men' && product.clothes === 'suits'),
   },
+  {
+    title: 'Жилеты',
+    sex: 'men',
+    clothes: 'vests',
+    link: '/catalog/men/vests',
+    items: products.filter((product: iProduct) => product.sex === 'men' && product.clothes === 'vests'),
+  },
+  // {
+  //   title: 'Костюмы',
+  //   sex: 'women',
+  //   clothes: 'suits',
+  //   link: '/catalog/women/suits',
+  //   items: products.filter((product: iProduct) => product.sex === 'women' && product.clothes === 'suits'),
+  // },
+  // {
+  //   title: 'Жилеты',
+  //   sex: 'women',
+  //   clothes: 'vests',
+  //   link: '/catalog/women/vests',
+  //   items: products.filter((product: iProduct) => product.sex === 'women' && product.clothes === 'vests'),
+  // },
 ];

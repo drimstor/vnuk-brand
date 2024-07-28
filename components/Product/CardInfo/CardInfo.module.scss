@@ -93,6 +93,7 @@
   background: rgba(255, 255, 255, 0.277);
   transition: 0.3s;
   text-transform: uppercase;
+  text-align: center;
 
   &:active {
     opacity: 0.8;
@@ -106,6 +107,10 @@
   &.active {
     @extend %border2;
     border: 1px solid rgba(169, 169, 169, 0.707);
+  }
+
+  &.breakWords {
+    font-size: 9px;
   }
 
   img {

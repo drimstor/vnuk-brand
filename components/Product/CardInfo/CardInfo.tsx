@@ -44,7 +44,7 @@ function CardInfo({ product }: CardInfoProps) {
           <span className={s.text}>Размер:</span>
           {product.sizes?.map((size, index) => (
             <div
-              className={clsx(s.circle, index === activeSize && s.active)}
+              className={clsx(s.circle, size.length > 5 && s.breakWords, index === activeSize && s.active)}
               key={index}
               onClick={() => setActiveSize(index)}
             >

@@ -62,7 +62,6 @@ import item12img5 from '@/public/products/sequin-silver-dress/img5.png';
 import item12img6 from '@/public/products/sequin-silver-dress/img6.png';
 import item12img7 from '@/public/products/sequin-silver-dress/img7.png';
 import item12color from '@/public/products/sequin-silver-dress/color.png';
-
 import item13img1 from '@/public/products/long-coat-print/img1.png';
 import item13img2 from '@/public/products/long-coat-print/img2.png';
 import item13img3 from '@/public/products/long-coat-print/img3.png';
@@ -73,6 +72,43 @@ import item14img1 from '@/public/products/black-velvet-suit/img1.png';
 import item14img2 from '@/public/products/black-velvet-suit/img2.png';
 import item14img3 from '@/public/products/black-velvet-suit/img3.png';
 import item14img4 from '@/public/products/black-velvet-suit/img4.png';
+import item15img1 from '@/public/products/wool-collection-vest/men-1.png';
+import item15img2 from '@/public/products/wool-collection-vest/men-2.png';
+import item15img3 from '@/public/products/wool-collection-vest/men-3.png';
+import item15img4 from '@/public/products/wool-collection-vest/men-4.png';
+import item15color from '@/public/products/wool-collection-vest/color.jpg';
+import item16img1 from '@/public/products/wool-collection-vest/women-1.png';
+import item16img2 from '@/public/products/wool-collection-vest/women-2.png';
+import item16img3 from '@/public/products/wool-collection-vest/women-3.png';
+import item16img4 from '@/public/products/wool-collection-vest/women-4.png';
+import item16img5 from '@/public/products/wool-collection-vest/women-5.png';
+import item17img1 from '@/public/products/wool-collection-shirt/img1.png';
+import item17img2 from '@/public/products/wool-collection-shirt/img2.png';
+import item17img3 from '@/public/products/wool-collection-shirt/img3.png';
+import item17img4 from '@/public/products/wool-collection-shirt/img4.png';
+import item17img5 from '@/public/products/wool-collection-shirt/img5.png';
+import item19img1 from '@/public/products/red-collection-dress/img1.png';
+import item19img2 from '@/public/products/red-collection-dress/img2.png';
+import item19img3 from '@/public/products/red-collection-dress/img3.png';
+import item19img4 from '@/public/products/red-collection-dress/img4.png';
+import item19color from '@/public/products/red-collection-dress/color.jpg';
+import item18img1 from '@/public/products/red-collection-velvet-dress/img1.png';
+import item18img2 from '@/public/products/red-collection-velvet-dress/img2.png';
+import item18img3 from '@/public/products/red-collection-velvet-dress/img3.png';
+import item18img4 from '@/public/products/red-collection-velvet-dress/img4.png';
+import item18img5 from '@/public/products/red-collection-velvet-dress/img5.png';
+import item18img6 from '@/public/products/red-collection-velvet-dress/img6.png';
+import item18img7 from '@/public/products/red-collection-velvet-dress/img7.png';
+import item20img1 from '@/public/products/black-velvet-unisex-suit/men-1.png';
+import item20img2 from '@/public/products/black-velvet-unisex-suit/men-2.png';
+import item20img3 from '@/public/products/black-velvet-unisex-suit/men-3.png';
+import item20img4 from '@/public/products/black-velvet-unisex-suit/men-4.png';
+import item20img5 from '@/public/products/black-velvet-unisex-suit/men-5.png';
+import item21img1 from '@/public/products/black-velvet-unisex-suit/women-1.png';
+import item21img2 from '@/public/products/black-velvet-unisex-suit/women-2.png';
+import item21img3 from '@/public/products/black-velvet-unisex-suit/women-3.png';
+import item21img4 from '@/public/products/black-velvet-unisex-suit/women-4.png';
+import item21img5 from '@/public/products/black-velvet-unisex-suit/women-5.png';
 
 import { iProduct } from '@/helpers/types';
 
@@ -260,5 +296,96 @@ export const products: iProduct[] = [
     clothes: 'suits',
     link: '/product/black-velvet-suit',
     images: [item14img1, item14img2, item14img3, item14img4],
+  },
+  {
+    id: 15,
+    title: 'Жилет WOOL COLLECTION',
+    description: 'Жилет из натуральной шерсти',
+    price: '16 000',
+    sex: 'men',
+    color: { name: 'Серый', color: item15color },
+    material: { name: 'Шерсть', material: item1color },
+    sizes: ['One Size'],
+    clothes: 'vests',
+    link: '/product/wool-collection-vest-men',
+    images: [item15img1, item15img2, item15img3, item15img4],
+  },
+  {
+    id: 16,
+    title: 'Жилет WOOL COLLECTION',
+    description: 'Жилет из натуральной шерсти',
+    price: '16 000',
+    sex: 'men',
+    color: { name: 'Серый', color: item15color },
+    material: { name: 'Шерсть', material: item1color },
+    sizes: ['One Size'],
+    clothes: 'vests',
+    link: '/product/wool-collection-vest-women',
+    images: [item16img1, item16img2, item16img3, item16img4, item16img5],
+  },
+  {
+    id: 17,
+    title: 'Рубашка WOOL COLLECTION',
+    description: 'Рубашка из натуральной шерсти с принтом',
+    price: '28 800',
+    sex: 'men',
+    color: { name: 'Серый', color: item15color },
+    material: { name: 'Шерсть', material: item1color },
+    sizes: ['m', 'l'],
+    clothes: 'shirts',
+    link: '/product/wool-collection-shirt',
+    images: [item17img1, item17img2, item17img3, item17img4, item17img5],
+  },
+  {
+    id: 18,
+    title: 'Платье RED collection',
+    description: 'Бархатное платье на натуральном шелке',
+    price: '73 300',
+    sex: 'women',
+    color: { name: 'Красный', color: item7color },
+    material: { name: 'Шелковый бархат', material: item7material },
+    sizes: ['xs', 's', 'm'],
+    clothes: 'dresses',
+    link: '/product/red-collection-velvet-dress',
+    images: [item18img1, item18img2, item18img3, item18img4, item18img5, item18img6, item18img7],
+  },
+  {
+    id: 19,
+    title: 'Платье RED collection',
+    description: 'Платье из твида на хлопковой основе',
+    price: '18 600',
+    sex: 'women',
+    color: { name: 'Цветной', color: item19color },
+    material: { name: 'Твид на хлопке', material: item19color },
+    sizes: ['xs', 's', 'm'],
+    clothes: 'dresses',
+    link: '/product/red-collection-dress',
+    images: [item19img1, item19img2, item19img3, item19img4],
+  },
+  {
+    id: 20,
+    title: 'Костюм Black Velvet Silk',
+    description: 'Бархатный костюм на натуральном шелке',
+    price: '48 000',
+    sex: 'men',
+    color: { name: 'Чёрный', color: blackColor },
+    material: { name: 'Шелковый бархат', material: velvet },
+    sizes: ['m', 'l'],
+    clothes: 'suits',
+    link: '/product/black-velvet-men-suit',
+    images: [item20img1, item20img2, item20img3, item20img4, item20img5],
+  },
+  {
+    id: 21,
+    title: 'Костюм Black Velvet Silk',
+    description: 'Бархатный костюм на натуральном шелке',
+    price: '48 000',
+    sex: 'men',
+    color: { name: 'Чёрный', color: blackColor },
+    material: { name: 'Шелковый бархат', material: velvet },
+    sizes: ['s', 'm'],
+    clothes: 'suits',
+    link: '/product/black-velvet-womens-suit',
+    images: [item21img1, item21img2, item21img3, item21img4, item21img5],
   },
 ];
