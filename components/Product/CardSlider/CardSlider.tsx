@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import React, { TouchEvent, useEffect, useRef, useState } from 'react';
 import s from './CardSlider.module.scss';
-import clsx from 'clsx';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlassMinus, faMagnifyingGlassPlus } from '@fortawesome/free-solid-svg-icons';
 import { iProduct } from '@/helpers/types';
 import BackButton from '@/ui-kit/Buttons/BackButton';
+import clsx from 'clsx';
 
 interface CardSliderProps {
   images: iProduct['images'];
