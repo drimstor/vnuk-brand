@@ -68,10 +68,6 @@ import item13img3 from '@/public/products/long-coat-print/img3.png';
 import item13img4 from '@/public/products/long-coat-print/img4.png';
 import item13img5 from '@/public/products/long-coat-print/img5.png';
 import item13color from '@/public/products/long-coat-print/color.png';
-import item14img1 from '@/public/products/black-velvet-suit/img1.png';
-import item14img2 from '@/public/products/black-velvet-suit/img2.png';
-import item14img3 from '@/public/products/black-velvet-suit/img3.png';
-import item14img4 from '@/public/products/black-velvet-suit/img4.png';
 import item15img1 from '@/public/products/wool-collection-vest/men-1.png';
 import item15img2 from '@/public/products/wool-collection-vest/men-2.png';
 import item15img3 from '@/public/products/wool-collection-vest/men-3.png';
@@ -283,19 +279,6 @@ export const products: iProduct[] = [
     clothes: 'fur-coats',
     link: '/product/long-coat-print',
     images: [item13img1, item13img2, item13img3, item13img4, item13img5],
-  },
-  {
-    id: 14,
-    title: 'Костюм Black Velvet Silk',
-    description: 'Бархатный костюм на натуральном шелке',
-    price: '36 000',
-    sex: 'men',
-    color: { name: 'Чёрный', color: blackColor },
-    material: { name: 'Шелковый бархат', material: item1color },
-    sizes: ['m', 'l', 'xl'],
-    clothes: 'suits',
-    link: '/product/black-velvet-suit',
-    images: [item14img1, item14img2, item14img3, item14img4],
   },
   {
     id: 15,
