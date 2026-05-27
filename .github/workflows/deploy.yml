@@ -85,6 +85,7 @@ jobs:
           echo "🎉 VNUK Brand deployed successfully!"
           echo "Commit SHA: ${{ github.sha }}"
           echo "Image: ${{ secrets.DOCKERHUB_USERNAME }}/vnuk-brand:latest"
+          echo "🌐 Site URL: https://vnuk-brand.com"
 
 
 
