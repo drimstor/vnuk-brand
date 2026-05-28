@@ -6,7 +6,7 @@
 }
 
 .imagesCarousel {
-  height: 100vh;
+  height: 100dvh;
   overflow-y: scroll;
   @extend %scroll;
   display: flex;
@@ -47,7 +47,7 @@
 }
 
 .slideBox {
-  min-height: 100vh;
+  min-height: 100dvh;
 
   @include tablet {
     min-width: 100vw;

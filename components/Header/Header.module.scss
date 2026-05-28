@@ -87,7 +87,7 @@
 
 .backdrop {
   width: 100vw;
-  height: calc(100vh - (50px + 90px));
+  height: calc(100dvh - (50px + 90px));
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: calc(50px + 135px);
@@ -130,7 +130,7 @@
   }
 
   &.show {
-    height: 100vh;
+    height: 100dvh;
   }
 }
 

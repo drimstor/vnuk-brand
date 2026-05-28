@@ -10,16 +10,16 @@
 
 .mainImage {
   width: 100%;
-  max-height: calc(100vh + 30px);
+  max-height: calc(100dvh + 30px);
   height: auto;
   object-fit: cover;
 
   @include tablet {
-    height: 100vh;
+    height: 100dvh;
   }
 
   &.mainImage1 {
-    max-height: calc(100vh - 50px);
+    max-height: calc(100dvh - 50px);
     object-position: top;
   }
 }
@@ -36,7 +36,7 @@
 
 .textWrapper {
   position: absolute;
-  top: calc(50vh - (260px / 2));
+  top: calc(50dvh - (260px / 2));
   left: calc(50% - (450px / 2));
   min-width: 450px;
   background: rgba(243, 238, 234, 0.6);
@@ -57,7 +57,7 @@
   }
 
   @include tablet {
-    top: calc(50vh - (260px / 2));
+    top: calc(50dvh - (260px / 2));
     padding: 40px 20px;
     min-width: 338px;
     left: calc(50% - (338px / 2));

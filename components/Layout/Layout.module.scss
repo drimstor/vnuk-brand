@@ -1,7 +1,7 @@
 @use '/styles/_helpers' as *;
 
 .globalWrapper {
-  height: 100vh;
+  height: 100dvh;
   overflow-y: auto;
   overflow-x: hidden;
   @extend %scroll;
