@@ -28,7 +28,7 @@ function Footer() {
           rights belong to their respective owners. Android, Google Play and the Google Play logo are trademarks of
           Google LLC.
         </p>
-        <span className={s.copyright}>2023 VNUK©</span>
+        <span className={s.copyright}>2023-{new Date().getFullYear()} VNUK©</span>
       </div>
     </footer>
   );
